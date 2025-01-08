@@ -14,7 +14,7 @@ class CharacterView extends StatelessWidget {
       ),
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.1),
+        color: Colors.black12,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
