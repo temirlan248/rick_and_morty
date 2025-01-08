@@ -1,12 +1,14 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:rick_and_morty/api/rick_and_morty_api.dart';
 import 'package:rick_and_morty/dto/character_dto.dart';
 import 'package:rick_and_morty/model/character.dart';
 import 'package:rick_and_morty/model/result.dart';
 import 'package:rick_and_morty/repo/character_repo.dart';
 
+@Injectable(as: CharacterRepo)
 class CharacterRepoImpl implements CharacterRepo {
   final RickAndMortyApi _api;
   final Converter<CharacterDto, Character> _characterMapper;
