@@ -18,12 +18,12 @@ class CharacterView extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: SizedBox(
-        height: 100,
+        height: 150,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox.square(
-              dimension: 100,
+              dimension: 150,
               child: Image.network(
                 character.image,
                 errorBuilder: (context, _, stackTrace) {
@@ -53,13 +53,19 @@ class CharacterView extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Text(
-                  character.name,
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                  softWrap: true,
-                  overflow: TextOverflow.fade,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      character.name,
+                      style: TextStyle(
+                        fontSize: 24,
+                      ),
+                      maxLines: 2,
+                      softWrap: true,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
                 ),
               ),
             ),
