@@ -17,46 +17,54 @@ class CharacterView extends StatelessWidget {
         color: Colors.black12,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 100,
-            height: 100,
-            child: Image.network(
-              character.image,
-              errorBuilder: (context, _, stackTrace) {
-                return Icon(
-                  Icons.person,
-                  color: Colors.blueGrey,
-                );
-              },
-              loadingBuilder: (context, child, loadingProgress) {
-                final progress = (loadingProgress?.cumulativeBytesLoaded ?? 1) /
-                    (loadingProgress?.expectedTotalBytes ?? 1);
-
-                if (progress < 1) {
-                  return SizedBox.square(
-                    dimension: 48,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
+      child: SizedBox(
+        height: 100,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox.square(
+              dimension: 100,
+              child: Image.network(
+                character.image,
+                errorBuilder: (context, _, stackTrace) {
+                  return Icon(
+                    Icons.person,
+                    color: Colors.blueGrey,
                   );
-                }
-                return child;
-              },
+                },
+                loadingBuilder: (context, child, loadingProgress) {
+                  final progress =
+                      (loadingProgress?.cumulativeBytesLoaded ?? 1) /
+                          (loadingProgress?.expectedTotalBytes ?? 1);
+
+                  if (progress < 1) {
+                    return SizedBox.square(
+                      dimension: 48,
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  }
+                  return child;
+                },
+              ),
             ),
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
+            SizedBox(width: 12),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Text(
                   character.name,
+                  style: TextStyle(
+                    fontSize: 24,
+                  ),
+                  softWrap: true,
+                  overflow: TextOverflow.fade,
                 ),
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
