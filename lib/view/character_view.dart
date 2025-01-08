@@ -38,9 +38,7 @@ class CharacterView extends StatelessWidget {
                   return SizedBox.square(
                     dimension: 48,
                     child: Center(
-                      child: CircularProgressIndicator(
-                        value: progress,
-                      ),
+                      child: CircularProgressIndicator(),
                     ),
                   );
                 }
@@ -48,8 +46,15 @@ class CharacterView extends StatelessWidget {
               },
             ),
           ),
-          Text(
-            character.name,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  character.name,
+                ),
+              ],
+            ),
           ),
         ],
       ),
