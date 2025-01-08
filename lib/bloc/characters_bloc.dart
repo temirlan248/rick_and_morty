@@ -1,7 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:rick_and_morty/bloc/characters_state.dart';
 import 'package:rick_and_morty/repo/character_repo.dart';
 
+@injectable
 class CharactersBloc extends Cubit<CharactersState> {
   final CharacterRepo _characterRepo;
 
